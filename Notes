@@ -1,0 +1,12 @@
+
+cv::Ptr<cv::bioinspired::Retina> retina;
+int retinaHcellsGain;
+int localAdaptation_photoreceptors, localAdaptation_Gcells;
+static void callBack_updateRetinaParams(int, void*)
+{
+retina->setupOPLandIPLParvoChannel(true, true, (float)(localAdaptation_photoreceptors/200.0), 0.5f, 0.43f, (float)retinaHcellsGain, 1.f, 7.f, (float)(localAdaptation_Gcells/200.0));
+}
+
+#include "opencv2/bioinspired.hpp" // retina based algorithms
+cv::Ptr<cv::bioinspired::Retina> retina;
+retina->applyFastToneMapping(imageInputRescaled, fastToneMappingOutput);
